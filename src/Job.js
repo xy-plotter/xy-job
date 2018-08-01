@@ -15,7 +15,7 @@ const DEFAULTS = {
   precision: 3
 }
 
-// Milliseconds
+// Speed constants are in milliseconds
 const SPEED_MAX_DELAY = 1000
 const SPEED_MIN_DELAY = 100
 
