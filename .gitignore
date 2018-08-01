@@ -1,0 +1,28 @@
+.env
+yarn.lock
+src_images
+
+# Editors
+.idea
+.vscode
+
+# Node / Yarn / Npm
+node_modules
+npm-debug.log*
+yarn.lock
+
+# Logs and Temporary files
+.tmp
+logs
+*.log
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Misc
+coverage
+/node_modules

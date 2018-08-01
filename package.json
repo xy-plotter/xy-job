@@ -1,0 +1,54 @@
+{
+  "name": "xy-job",
+  "amdName": "XYJob",
+  "version": "0.0.1",
+  "description": "",
+  "source": "src/index.js",
+  "main": "dist/xy-job.js",
+  "umd:main": "dist/xy-job.umd.js",
+  "module": "dist/xy-job.m.js",
+  "scripts": {
+    "build": "microbundle -f es,cjs --sourcemap false & microbundle -f umd --target browser --sourcemap false --external none & wait",
+    "dev": "microbundle watch -f cjs --sourcemap false",
+    "tape": "tape test/index.js | tap-spec",
+    "lint": "eslint src/** test/**",
+    "test": "npm run lint && npm run build && npm run tape",
+    "prepublishOnly": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xy-plotter/xy-job.git"
+  },
+  "keywords": [
+    "plotter",
+    "xy",
+    "rpi",
+    "makeblock"
+  ],
+  "author": "Arnaud Juracek, Hugo Piquemal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xy-plotter/xy-job/issues"
+  },
+  "homepage": "https://github.com/xy-plotter/xy-job#readme",
+  "eslintConfig": {
+    "extends": [
+      "standard"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^12.0.0-alpha.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "microbundle": "^0.6.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1",
+    "tape-promise": "^3.0.0"
+  },
+  "dependencies": {
+    "tiny-emitter": "^2.0.2"
+  }
+}
