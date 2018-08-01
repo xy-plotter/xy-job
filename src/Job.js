@@ -15,6 +15,10 @@ const DEFAULTS = {
   precision: 3
 }
 
+// Milliseconds
+const SPEED_MAX_DELAY = 1000
+const SPEED_MIN_DELAY = 100
+
 export default class Job extends Emitter {
   constructor (opts = {}) {
     super()
@@ -89,18 +93,18 @@ export default class Job extends Emitter {
     return this.enqueue('HOME')
   }
 
-  pen (ang, force) {
+  pen (ang) {
     // Don't add instruction if the value is the same as the saved one
-    if (this.queueState.pen !== this.round(ang) || !force) return this
+    if (this.queueState.pen !== this.round(ang)) return this
     return this.enqueue('PEN', ang)
   }
 
-  penUp (force) {
-    return this.pen(this.bounds.pen[0], force)
+  penUp () {
+    return this.pen(this.bounds.pen[0])
   }
 
-  penDown (force) {
-    return this.pen(this.bounds.pen[1], force)
+  penDown () {
+    return this.pen(this.bounds.pen[1])
   }
 
   setSpeed (speedPercent) {
@@ -113,9 +117,7 @@ export default class Job extends Emitter {
       return this
     }
 
-    const maxDelay = 1000 // ms
-    const securityMinDelay = 100 // ms
-    const speed = securityMinDelay + maxDelay - (maxDelay * speedPercent)
+    const speed = SPEED_MIN_DELAY + SPEED_MAX_DELAY - (SPEED_MAX_DELAY * speedPercent)
 
     // Don't add instruction if the value is the same as the saved one
     if (this.queueState.speed !== this.round(speed)) this.enqueue('SPEED', speed)
